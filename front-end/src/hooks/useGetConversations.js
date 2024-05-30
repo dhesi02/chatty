@@ -7,7 +7,7 @@ const useGetConversations = () => {
 
     useEffect(()=>{
         
-        const getConversation = async () =>{
+        const getConversations = async () =>{
             
             setLoading(true);
             try {
@@ -30,7 +30,7 @@ const useGetConversations = () => {
             }
         }
 
-        getConversation();
+        getConversations();
 
     },[])
 

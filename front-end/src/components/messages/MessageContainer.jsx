@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
 import { SiGooglemessages } from "react-icons/si";
-import useConversations from '../../zustand/useConversation';
+import useConversations from '../../zustand/useConversation.js';
 
 const MessageContainer = () => {
     const {selectedConversations,setSelectedConversations} = useConversations();
+
+    useEffect(()=>{
+        setSelectedConversations(null);
+    },[setSelectedConversations])
+    
   return (
     <div className='md:min-w-[450px] flex flex-col'>
 
