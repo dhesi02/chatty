@@ -3,10 +3,11 @@ import User from '../models/user.model.js';
 
 const protectRoute = async (req,res,next) =>{
     try {
+
         const token = req.cookies.jwt;
 
         if(!token){
-            return res.status(401).json({error:"Unauthorized - no token provided"});
+            return res.status(401).json({error:""+token});
         }
     
         const decoded = jwt.verify(token,process.env.JWT_SECRET);
@@ -27,6 +28,7 @@ const protectRoute = async (req,res,next) =>{
     }
 
     catch (error) {
+        console.log(error.message)
         res.status(500).json({error:"Internal server error"})
     }
 }

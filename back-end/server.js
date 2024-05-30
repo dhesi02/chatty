@@ -20,12 +20,7 @@ dotenv.config()
 
 app.use(express.json());
 app.use(cookieParser());
-const corsOptions ={
-    origin:'*', 
-    credentials:true,            
-    optionSuccessStatus:200,
-} 
- app.use(cors(corsOptions))
+
 
 
 app.use("/api/auth",authRoutes)

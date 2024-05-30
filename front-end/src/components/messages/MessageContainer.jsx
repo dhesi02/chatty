@@ -2,20 +2,21 @@ import React from 'react'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
 import { SiGooglemessages } from "react-icons/si";
+import useConversations from '../../zustand/useConversation';
 
 const MessageContainer = () => {
-    const nochatSelected=true;
+    const {selectedConversations,setSelectedConversations} = useConversations();
   return (
     <div className='md:min-w-[450px] flex flex-col'>
 
-        {nochatSelected ? <NochatSelected/> :(
+        {!selectedConversations ? <NochatSelected/> :(
             <>
             <div className='bg-slate-800 px-5 py-3 mb-5'>
                 <div className='chat-image avatar'>
                     <div className='w-10 rounded-full'>
-                        <img src="https://avatar.iran.liara.run/public/girl" alt="user avator" />
+                        <img src={selectedConversations.profilePic} alt="user avator" />
                     </div>
-                    <span className='text-white font-bold py-2 px-3'>Jeevi</span>
+                    <span className='text-white font-bold py-2 px-3'>{selectedConversations.username}</span>
                 </div>
         
             </div>
