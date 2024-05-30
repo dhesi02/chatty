@@ -6,14 +6,14 @@ import cors from 'cors'
 import authRoutes from './Routes/auth.route.js'
 import messageRoutes from './Routes/message.route.js'
 import userRoutes from './Routes/user.route.js'
-
+import { app, server } from './socket/socket.js';
 
 import connectToMongoDB from './db/connectToMongoDB.js';
 
 
 
 
-const app=express();
+
 const PORT=process.env.PORT || 5000;
 
 dotenv.config()
@@ -32,7 +32,7 @@ app.get("/",(req,res)=>{
 })
 
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     connectToMongoDB();
     console.log(`app listening on port ${PORT}`);
 });

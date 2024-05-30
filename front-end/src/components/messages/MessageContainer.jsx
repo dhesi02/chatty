@@ -3,6 +3,7 @@ import Messages from './Messages'
 import MessageInput from './MessageInput'
 import { SiGooglemessages } from "react-icons/si";
 import useConversations from '../../zustand/useConversation.js';
+import { useAuthContext } from '../../context/AuthContext.jsx';
 
 const MessageContainer = () => {
     const {selectedConversations,setSelectedConversations} = useConversations();
@@ -39,10 +40,11 @@ export default MessageContainer
 
 
 const NochatSelected = () => {
+    const {authUser} = useAuthContext();
     return(
         <div className='flex items-center justify-center w-full h-full'>
             <div className='px-4 text-center sm:text-lg md:text-xl text-white font-semibold flex flex-col items-center gap-2'>
-                <p>Welcome Dhesigan!!</p>
+                <p>Welcome {authUser.username}</p>
                 <p>Select chat to start messaging..</p>
                 <SiGooglemessages  className='text-3xl md:text-6xl text-center'/>
 
